@@ -1,0 +1,91 @@
+.navbar {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: darkcyan;
+    height: 70px;
+    color: white;
+    font-size: 20px;
+}
+
+
+* {
+    margin: 0 !important
+}
+
+.container-class {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    /*min-height: 100vh;*/
+    padding: 70px;
+
+}
+
+.section-class {
+    width: 100%;
+    max-width: 420px;
+    min-height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding: 1rem;
+    background-color: white;
+    border-radius: 8px;
+    border: 1.5px solid lightgrey;
+}
+
+.form_item {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    margin: 16px;
+    padding: 14px;
+}
+
+.signup-header {
+    font-size: 30px;
+    text-align: center;
+}
+
+.button-signup {
+    background-color: #f0ad4e !important;
+    font-weight: 500;
+}
+
+body {
+    background-color: #f0f2f5 !important;
+}
+
+.forget-class {
+    cursor: pointer;
+    text-decoration: none;
+    text-align: center;
+    color: #1877f2;
+    font-weight: 500;
+}
+
+.weight-class {
+    font-weight: 500;
+}
+
+.alert-class {
+    border: 1px solid #ffeeba;
+    background-color: #fff3cd;
+    color: #856404;
+    text-align: center;
+}
+
+.error-class {
+    text-align: center;
+    font-weight: 500;
+    color: red;
+}
+
+.alert-class-success {
+    color: #155724;
+    background-color: #d4edda;
+    border-color: #c3e6cb;
+    text-align: center;
+}
