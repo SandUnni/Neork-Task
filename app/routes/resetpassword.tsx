@@ -8,8 +8,13 @@ import { createClient } from '@supabase/supabase-js';
 
 export const loader: LoaderFunction = async ({ request }: { request: Request }) => {
 
-    let data = {};
-    return json(data);
+    const { SUPABASE_URL, SUPABASE_ANON_KEY } = process.env
+    return json({
+        env: {
+            SUPABASE_URL,
+            SUPABASE_ANON_KEY,
+        },
+    })
 }
 
 export const action: ActionFunction = async ({
@@ -40,25 +45,20 @@ export const action: ActionFunction = async ({
     }
 
 
-
-    const supabaseUrl = process.env.SUPABASE_URL ?? ''
-    const supabaseKey = process.env.SUPABASE_ANON_KEY ?? ''
-
     let mismatch = false;
     if (newPassword !== confirmpassword) {
         mismatch = true;
     }
 
     if (type === "recovery" && accessToken !== "") {
-
         return json(
-            { type, accessToken, mismatch, newPassword, supabaseUrl, supabaseKey, refreshToken }
+            { type, accessToken, mismatch, newPassword, refreshToken }
         );
 
     }
     else {
         return json(
-            { mismatch, newPassword, supabaseUrl, supabaseKey, type, accessToken }
+            { mismatch, newPassword, type }
         );
     }
 
@@ -66,10 +66,9 @@ export const action: ActionFunction = async ({
 
 };
 export default function resetpasswordPage() {
-    //const loadData = useLoaderData(); // This will call the loader() function
+    const loadData = useLoaderData(); // This will call the loader() function
     const actionData = useActionData(); // This will call the action() when form submit  
     const [hashValue, setHash] = useState<any>('');
-
 
     let formRef = useRef();
     var transition = useTransition()
@@ -81,13 +80,12 @@ export default function resetpasswordPage() {
     }, [])
 
 
-    if (actionData?.newPassword && actionData?.accessToken) {
+    if (actionData?.newPassword && actionData?.accessToken && !actionData?.mismatch && actionData?.type === "recovery") {
         showMsg = true;
-        const supabase = createClient(actionData?.supabaseUrl,
-            actionData?.supabaseKey);
+        const supabase = createClient(loadData?.env.SUPABASE_URL,
+            loadData?.env.SUPABASE_ANON_KEY);
 
         supabase.auth.setSession({ access_token: actionData?.accessToken, refresh_token: actionData?.refreshToken })
-
 
         try {
             const result = supabase.auth
@@ -101,9 +99,7 @@ export default function resetpasswordPage() {
             msgClass = "form_item error-class";
         }
 
-
         formRef.current?.reset();
-
 
     }
 
@@ -130,7 +126,6 @@ export default function resetpasswordPage() {
                                 type="password"
                                 autoFocus={true}
                                 required
-                                autoComplete="current-password"
                                 aria-describedby="newPassword-error"
                                 className="w-full rounded border border-gray-500 px-2 py-1 text-lg"
                             />
@@ -149,13 +144,12 @@ export default function resetpasswordPage() {
                                 id="confirmpassword"
                                 name="confirmpassword"
                                 type="password"
-                                autoComplete="current-password"
                                 required
                                 aria-describedby="confirmpassword-error"
                                 className="w-full rounded border border-gray-500 px-2 py-1 text-lg"
                             />
                             {actionData?.mismatch && (
-                                <div className="pt-1 text-red-700" id="password-error">
+                                <div className="pt-1 form_item error-class" id="password-error">
                                     {'Password mismatch'}
                                 </div>
                             )}
