@@ -128,6 +128,7 @@ export default function resetpasswordPage() {
                                 id="newPassword"
                                 name="newPassword"
                                 type="password"
+                                autoFocus={true}
                                 required
                                 autoComplete="current-password"
                                 aria-describedby="newPassword-error"

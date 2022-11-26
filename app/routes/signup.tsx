@@ -147,7 +147,6 @@ export default function SignupPage() {
 
                                     id="first"
                                     required
-                                    autoFocus={true}
                                     name="first"
                                     type="text"
                                     autoComplete="first"
@@ -174,7 +173,6 @@ export default function SignupPage() {
 
                                     id="last"
                                     required
-                                    autoFocus={true}
                                     name="last"
                                     type="text"
                                     autoComplete="last"
