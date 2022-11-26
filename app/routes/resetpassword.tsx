@@ -92,7 +92,6 @@ export default function resetpasswordPage() {
                 .updateUser({ password: actionData?.newPassword })
             msg = "Password updated successfully!";
             msgClass = "form_item alert-class-success";
-
         }
         catch (error) {
             msg = "Password updatation failed!";
