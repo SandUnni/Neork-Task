@@ -1,8 +1,6 @@
 import { useLoaderData, Form, useActionData, Link, useTransition, useParams } from '@remix-run/react';
 import { LoaderFunction, json, redirect, ActionFunction } from '@remix-run/node'
-import { createServerClient } from '@supabase/auth-helpers-remix'
 import { useEffect, useState, useRef } from 'react';
-import { getSession, commitSession } from "~/utils/session-server";
 import { createClient } from '@supabase/supabase-js';
 
 
