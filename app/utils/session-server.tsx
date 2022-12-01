@@ -1,5 +1,3 @@
-
-
 import { createCookieSessionStorage } from "@remix-run/node";
 
 const { getSession, commitSession, destroySession } =
@@ -15,8 +13,5 @@ const { getSession, commitSession, destroySession } =
             secure: true,
         },
     });
-
-
-
 
 export { getSession, commitSession, destroySession };

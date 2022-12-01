@@ -8,7 +8,7 @@ import {
   ScrollRestoration,
   useLoaderData,
 } from "@remix-run/react";
-import styles from "~/styles/shared.css";
+import styles from "~/styles/common.css";
 import tailwindStylesheetUrl from "./styles/tailwind.css";
 import { createBrowserClient, createServerClient } from '@supabase/auth-helpers-remix'
 

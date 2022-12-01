@@ -28,7 +28,7 @@ export const action: ActionFunction = async ({
     if (hashKey) {
         const hashArr: string = hashKey.substring(1)
             .split("&")
-            .map((params) => params.split("="));
+            .map((params: any) => params.split("="));
         for (const [key, value] of hashArr) {
             if (key === "access_token") {
                 accessToken = value;
@@ -60,19 +60,18 @@ export const action: ActionFunction = async ({
         );
     }
 
-
-
 };
-export default function resetpasswordPage() {
+export default function ResetpasswordPage() {
     const loadData = useLoaderData(); // This will call the loader() function
     const actionData = useActionData(); // This will call the action() when form submit  
     const [hashValue, setHash] = useState<any>('');
 
-    let formRef = useRef();
+    let formRef = useRef<any>();
     var transition = useTransition()
-    let showMsg = false;
-    let msg = "";
-    let msgClass = "";
+    let showMsg: boolean = false;
+    let msg: string = "";
+    let msgClass: string = "";
+
     useEffect(() => {
         setHash(window.location.hash);
     }, [])
@@ -99,8 +98,6 @@ export default function resetpasswordPage() {
         formRef.current?.reset();
 
     }
-
-
 
 
     return (
@@ -165,19 +162,18 @@ export default function resetpasswordPage() {
                             </div> : null
                     }
 
-
                 </Form>
-                {showMsg ?
+                {showMsg && (
                     <div className='form_item'>
 
                         <div className={msgClass}>
                             <p>{msg}</p>
                         </div>
-                    </div> : null
+                    </div>)
                 }
 
-                {showMsg ?
-                    <div className='form_item'>
+                {showMsg &&
+                    (<div className='form_item'>
                         <Link
                             className="text-blue-500 underline"
                             to={{
@@ -191,9 +187,8 @@ export default function resetpasswordPage() {
                                 Login now
                             </button> </Link>
 
-                    </div> : null}
-
-
+                    </div>)
+                }
 
             </div>
         </div>

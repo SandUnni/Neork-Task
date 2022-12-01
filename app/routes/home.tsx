@@ -47,7 +47,7 @@ export const loader: LoaderFunction = async ({ request }: { request: Request }) 
  */
 
 
-export default function homePage() {
+export default function HomePage() {
 
     const loadData = useLoaderData();
 

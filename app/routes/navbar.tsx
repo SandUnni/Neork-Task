@@ -1,9 +1,5 @@
 
-import { createServerClient } from '@supabase/auth-helpers-remix';
-import { ActionFunction } from '@remix-run/node';
-import { LoaderFunction, json, redirect } from '@remix-run/node';
-import { useLoaderData, Form, useActionData, Link } from '@remix-run/react';
-
+import { Form } from '@remix-run/react';
 
 export default function NavbarPage() {
 

@@ -94,9 +94,9 @@ export default function SignupPage() {
 
     // const loadData = useLoaderData(); // This will call the loader() function
     const actionData = useActionData(); // This will call the action() when form submit
-    var transition = useTransition()
-    let showMsg = false;
-    let formRef = useRef();
+    var transition = useTransition();
+    let showMsg: boolean = false;
+    let formRef = useRef<any>();
 
     if (actionData) {
         if (!actionData?.signupError && !actionData?.ifProfile) {
@@ -122,7 +122,6 @@ export default function SignupPage() {
                             </label>
                             <div className="mt-1">
                                 <input
-
                                     id="email"
                                     required
                                     autoFocus={true}
@@ -154,11 +153,6 @@ export default function SignupPage() {
                                     aria-describedby="first-error"
                                     className="w-full rounded border border-gray-500 px-2 py-1 text-lg"
                                 />
-                                {actionData?.errors?.first && (
-                                    <div className="pt-1 text-red-700" id="first-error">
-                                        {actionData.errors.first}
-                                    </div>
-                                )}
                             </div>
                         </div>
                         <div className='form_item'>
@@ -180,11 +174,6 @@ export default function SignupPage() {
                                     aria-describedby="last-error"
                                     className="w-full rounded border border-gray-500 px-2 py-1 text-lg"
                                 />
-                                {actionData?.errors?.last && (
-                                    <div className="pt-1 text-red-700" id="last-error">
-                                        {actionData.errors.last}
-                                    </div>
-                                )}
                             </div>
                         </div>
 
@@ -207,11 +196,6 @@ export default function SignupPage() {
                                     aria-describedby="password-error"
                                     className="w-full rounded border border-gray-500 px-2 py-1 text-lg"
                                 />
-                                {actionData?.errors?.password && (
-                                    <div className="pt-1 text-red-700" id="password-error">
-                                        {actionData.errors.password}
-                                    </div>
-                                )}
                             </div>
                         </div>
                         {transition.state === "idle" ?
@@ -234,7 +218,6 @@ export default function SignupPage() {
                                 className="text-blue-500 underline"
                                 to={{
                                     pathname: "/",
-                                    // search: searchParams.toString(),
                                 }}
                             >
                                 <button>
@@ -242,14 +225,18 @@ export default function SignupPage() {
                                 </button>
                             </Link>
                         </div>
-
-
                     </Form>
-                    {showMsg ?
-                        <div className='form_item alert-class'>
-                            <p>Thank you for your signing up. To get you started please confirm your email address by clicking the link sent in your mail.</p>
+                    {actionData?.signupError &&
+                        <div className='form_item'>
+                            <div className="pt-1 text-red-700 error-class" >
+                                {'Error when sign up'}
+                            </div>
+                        </div>
+                    }
+                    {showMsg && (<div className='form_item alert-class'>
+                        <p>Thank you for your signing up. To get you started please confirm your email address by clicking the link sent in your mail.</p>
 
-                        </div> : null
+                    </div>)
                     }
 
                 </div>

@@ -41,7 +41,7 @@ export default function ForgetpasswordPage() {
     const actionData = useActionData();
     var transition = useTransition();
 
-    let formRef = useRef();
+    let formRef = useRef<any>();
     let showMsg = false;
     if (actionData?.data) {
         showMsg = true;
@@ -69,13 +69,12 @@ export default function ForgetpasswordPage() {
                                 name="email"
                                 type="email"
                                 autoComplete="email"
-
                                 aria-describedby="email-error"
                                 className="w-full rounded border border-gray-500 px-2 py-1 text-lg"
                             />
-                            {actionData?.errors?.email && (
+                            {actionData?.error && (
                                 <div className="pt-1 text-red-700" id="email-error">
-                                    {actionData.errors.email}
+                                    {"Error when sending the email"}
                                 </div>
                             )}
 
@@ -95,7 +94,6 @@ export default function ForgetpasswordPage() {
                             className="text-blue-500 underline"
                             to={{
                                 pathname: "/",
-                                // search: searchParams.toString(),
                             }}
                         >
                             <button>

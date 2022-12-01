@@ -4,8 +4,6 @@ import { createServerClient } from '@supabase/auth-helpers-remix'
 import { ActionFunction } from '@remix-run/node'
 import { commitSession, getSession } from "~/utils/session-server";
 
-
-
 export const loader: LoaderFunction = async ({ request }: { request: Request }) => {
   let data = {};
   return json(data);
@@ -61,7 +59,6 @@ export const action: ActionFunction = async ({
 export default function Index() {
   //const loadData = useLoaderData(); // This will call the loader() function
   const actionData = useActionData(); // This will call the action() when form submit
-
   var transition = useTransition()
 
   return (
@@ -89,8 +86,6 @@ export default function Index() {
                   aria-describedby="email-error"
                   className="w-full rounded border border-gray-500 px-2 py-1 text-lg"
                 />
-
-
               </div>
             </div>
 
@@ -136,7 +131,6 @@ export default function Index() {
               className="text-blue-500 underline"
               to={{
                 pathname: "/forgetpassword",
-                //  search: searchParams.toString(),
               }}
             >
               <button>
@@ -149,7 +143,6 @@ export default function Index() {
               className="text-blue-500 underline"
               to={{
                 pathname: "/signup",
-                // search: searchParams.toString(),
               }}
             >
               <button
@@ -159,8 +152,6 @@ export default function Index() {
               </button>
             </Link>
           </div>
-
-
         </div>
       </div>
     </>
