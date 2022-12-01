@@ -8,7 +8,6 @@ import { ActionFunction } from '@remix-run/node'
 
 export const loader: LoaderFunction = async ({ request }: { request: Request }) => {
     const response = new Response()
-    const redirectTo = new URL(request.url).pathname;
     let session = await getSession(request.headers.get("Cookie"));
     const supabaseClient = createServerClient(
         process.env.SUPABASE_URL!,
@@ -18,8 +17,7 @@ export const loader: LoaderFunction = async ({ request }: { request: Request }) 
 
 
     if (!session.has("access_token")) {
-        let searchParams = new URLSearchParams([["redirectTo", redirectTo]]);
-        throw redirect(`/?${searchParams}`);
+        throw redirect('/'); //No token ,redirecting to login page
     } else {
         const { data: { user }, error: sessionErr } = await supabaseClient.auth.getUser(
             session.get("access_token")

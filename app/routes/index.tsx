@@ -80,9 +80,8 @@ export default function Index() {
                   required
                   autoFocus={true}
                   name="email"
-                  type="text"
+                  type="email"
                   autoComplete="email"
-                  aria-invalid={actionData?.error?.email ? true : undefined}
                   aria-describedby="email-error"
                   className="w-full rounded border border-gray-500 px-2 py-1 text-lg"
                 />
@@ -104,7 +103,6 @@ export default function Index() {
                   name="password"
                   type="password"
                   autoComplete="current-password"
-                  aria-invalid={actionData?.error?.password ? true : undefined}
                   aria-describedby="password-error"
                   className="w-full rounded border border-gray-500 px-2 py-1 text-lg"
                 />

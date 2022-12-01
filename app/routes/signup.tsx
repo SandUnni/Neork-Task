@@ -128,7 +128,6 @@ export default function SignupPage() {
                                     name="email"
                                     type="email"
                                     autoComplete="email"
-                                    aria-invalid={actionData?.errors?.email ? true : undefined}
                                     aria-describedby="email-error"
                                     className="w-full rounded border border-gray-500 px-2 py-1 text-lg"
                                 />
@@ -149,7 +148,6 @@ export default function SignupPage() {
                                     name="first"
                                     type="text"
                                     autoComplete="first"
-                                    aria-invalid={actionData?.errors?.first ? true : undefined}
                                     aria-describedby="first-error"
                                     className="w-full rounded border border-gray-500 px-2 py-1 text-lg"
                                 />
@@ -170,7 +168,6 @@ export default function SignupPage() {
                                     name="last"
                                     type="text"
                                     autoComplete="last"
-                                    aria-invalid={actionData?.errors?.last ? true : undefined}
                                     aria-describedby="last-error"
                                     className="w-full rounded border border-gray-500 px-2 py-1 text-lg"
                                 />
@@ -192,7 +189,6 @@ export default function SignupPage() {
                                     name="password"
                                     type="password"
                                     autoComplete="current-password"
-                                    aria-invalid={actionData?.errors?.password ? true : undefined}
                                     aria-describedby="password-error"
                                     className="w-full rounded border border-gray-500 px-2 py-1 text-lg"
                                 />
@@ -229,7 +225,7 @@ export default function SignupPage() {
                     {actionData?.signupError &&
                         <div className='form_item'>
                             <div className="pt-1 text-red-700 error-class" >
-                                {'Error when sign up'}
+                                {'Error when sign up!.'}
                             </div>
                         </div>
                     }
